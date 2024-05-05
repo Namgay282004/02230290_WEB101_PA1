@@ -1,19 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     loadPokemon();
-    
-    const headerItems = document.querySelectorAll('.header-item');
-    headerItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const sectionId = this.id.split('-')[0] + '-container';
-            showSection(sectionId);
-        });
-    });
-
-    const favoritesFilter = document.getElementById('favourites-filter');
-    favoritesFilter.addEventListener('click', showFavoritePokemon);
-
-    // Show the About section by default
+    setupHeaderItemClick();
+    setupFavoritesFilterClick();
     showSection('description-container');
+    setupAllButtonRedirection();
 });
 
 async function loadPokemon() {
@@ -37,6 +27,30 @@ async function loadPokemon() {
     } catch (error) {
         console.error('Failed to fetch Pokémon details:', error);
         document.getElementById('description-container').innerHTML = '<p>Error loading details. Please try again.</p>';
+    }
+}
+
+function setupHeaderItemClick() {
+    const headerItems = document.querySelectorAll('.header-item');
+    headerItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const sectionId = this.id.split('-')[0] + '-container';
+            showSection(sectionId);
+        });
+    });
+}
+
+function setupFavoritesFilterClick() {
+    const favoritesFilter = document.getElementById('favourites-filter');
+    favoritesFilter.addEventListener('click', showFavoritePokemon);
+}
+
+function setupAllButtonRedirection() {
+    const allButton = document.getElementById('all-button');
+    if (allButton) {
+        allButton.addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
     }
 }
 
@@ -74,8 +88,6 @@ function updateBasicStats(pokemon) {
     basicStatsContainer.innerHTML = basicStatsHTML;
 }
 
-
-
 function updateMoves(pokemon) {
     const movesContainer = document.getElementById('moves-container');
     movesContainer.innerHTML = `
@@ -96,7 +108,6 @@ function updateMoves(pokemon) {
         button.style.cursor = 'pointer';
     });
 }
-
 
 function showSection(sectionId) {
     const sections = document.querySelectorAll('.section');
@@ -155,3 +166,5 @@ function getFavorites() {
     // Retrieve favorites from localStorage or any other source
     return ["Pikachu", "Charmander"]; // Dummy favorites for demonstration
 }
+
+ChatGPT

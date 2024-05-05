@@ -131,10 +131,10 @@
         <button type="button" onclick="searchPokemon()">Search</button>
     </form>
     <div class="filters-container">
-        <span class="filter-button">All</span>
-        <span class="filter-button">Seen</span>
-        <span class="filter-button">Unseen</span>
-        <a href="favorite.html" class="filter-button">Favourites (<span id="favourite-count">0</span>)</a>
+        <span class="filter-button" id="all-button">All</span>
+        <a href="Seen.html" class="filter-button">Seen</a>
+        <a href="Unseen.html" class="filter-button">Unseen</a>
+        <a href="Favorite.html" class="filter-button">Favourites (<span id="favourite-count">0</span>)</a>
     </div>
     <div class="pokemon-detail-container" id="pokemon-detail-container">
         <div class="header">
@@ -158,6 +158,10 @@
     <div class="image-container" id="image-container">
         <img src="" alt="Pokémon Image">
     </div>
-    <script src="pokemonDetail.js"></script>
+    <script src="pokemonDetail.js">
+        document.getElementById('all-button').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>
