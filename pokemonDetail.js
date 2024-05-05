@@ -41,7 +41,7 @@ function setupHeaderItemClick() {
 }
 
 function setupFavoritesFilterClick() {
-    const favoritesFilter = document.getElementById('favourites-filter');
+    const favoritesFilter = document.getElementById('favorites-filter');
     favoritesFilter.addEventListener('click', showFavoritePokemon);
 }
 
@@ -112,7 +112,7 @@ function updateMoves(pokemon) {
 function showSection(sectionId) {
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => {
-        if (section.id === sectionId) {
+        if (section.id === sectionId || section.contains(document.getElementById(sectionId))) {
             section.style.display = 'block';
         } else {
             section.style.display = 'none';
@@ -166,5 +166,3 @@ function getFavorites() {
     // Retrieve favorites from localStorage or any other source
     return ["Pikachu", "Charmander"]; // Dummy favorites for demonstration
 }
-
-ChatGPT
